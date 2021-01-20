@@ -34,12 +34,13 @@
 		&::before {
 			@include breakpoint-up(large) {
 				content: '';
+				background-repeat: no-repeat;
 				position: absolute;
 				height: 100%;
-				width: 150%;
-				background-size: 125.4%;
+				width: 120%;
+				background-size: 70rem;
 				// first value is horizontal and second is vertical so now we are positioning it to start from the bottom
-				background-position: 0% 75%;
+				background-position: 10% 70%;
 				background-image: url('/images/bg-intro-desktop.svg');
 			}
 		}
@@ -60,11 +61,11 @@
 			}
 
 			@include breakpoint-up(large) {
-				width: 120%;
+				width: 60rem;
 				height: 122%;
-				background-size: 94%;
-				background-position: center 150%;
-				left: 22%;
+				background-size: 80%;
+				background-position: center 95%;
+				left: 15%;
 			}
 		}
 	}

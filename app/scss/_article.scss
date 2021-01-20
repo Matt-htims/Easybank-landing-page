@@ -10,7 +10,7 @@
 		display: grid;
 		// 1fr means that the items will take up the entire space that they can
 		grid-template-columns: 1fr;
-		gap: 1.875rem;
+		grid-gap: 1.875rem;
 
 		@include breakpoint-up(medium) {
 			// with repeat the first arg is the number of columns (2) and then we again say to take up as much space as possible but as there are two columns this will be shared evenly between the two

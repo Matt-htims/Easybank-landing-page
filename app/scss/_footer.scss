@@ -1,0 +1,135 @@
+footer {
+	background-color: $darkBlue;
+}
+
+.footer {
+	color: $white;
+	padding: 2.5rem;
+	text-align: center;
+
+	a {
+		color: $white;
+	}
+
+	.container {
+		@include breakpoint-up(large) {
+			padding: 0rem 2.25rem;
+			display: grid;
+			//here have 4 columns, first 3 take up 1 fr and the 4th takes up 2 so double the width
+			grid-template-columns: 2fr 1fr 1fr 3fr;
+			// here we just have two rows of equal size
+			grid-template-rows: repeat(2, 1fr);
+			grid-template-areas:
+				'logo links1 links2 cta'
+				'social links1 links2 copyright';
+			gap: 1rem;
+			justify-items: start;
+		}
+	}
+
+	&__logo {
+		// Need to add display: block as by default a tags are inline and so can't change width and height or similar properties
+		display: inline-block;
+
+		@include breakpoint-down(medium) {
+			margin-bottom: 1.875rem;
+		}
+
+		@include breakpoint-up(large) {
+			grid-area: logo;
+			align-self: start;
+		}
+	}
+
+	&__social {
+		a {
+			display: inline-block;
+			// height: 15px;
+			width: 1.125rem;
+
+			svg path {
+				transition: fill 100ms ease-in-out;
+			}
+
+			&:hover svg path {
+				fill: $limeGreen;
+			}
+		}
+
+		a:not(:last-child) {
+			margin-right: 0.8rem;
+		}
+
+		@include breakpoint-down(medium) {
+			margin-bottom: 1.875rem;
+		}
+
+		@include breakpoint-up(large) {
+			grid-area: social;
+			align-self: end;
+		}
+	}
+
+	&__links {
+		// To get all the links in a column for mobile
+		display: flex;
+		flex-direction: column;
+		// Below means the flex children only take up the space they need to not the full width
+		align-items: center;
+		font-size: 0.9375rem;
+
+		@include breakpoint-up(large) {
+			// to align them to the left in their flexbox parent when in desktop mode
+			align-items: start;
+			justify-content: space-between;
+		}
+
+		&.col1 {
+			@include breakpoint-up(large) {
+				grid-area: links1;
+			}
+		}
+
+		&.col2 {
+			@include breakpoint-down(medium) {
+				margin-bottom: 1.875rem;
+			}
+
+			@include breakpoint-up(large) {
+				grid-area: links2;
+			}
+		}
+
+		a {
+			line-height: 2.25;
+			transition: color 100ms ease-in-out;
+
+			&:hover {
+				color: $limeGreen;
+			}
+		}
+	}
+
+	&__cta {
+		@include breakpoint-down(medium) {
+			margin-bottom: 1.875rem;
+		}
+
+		@include breakpoint-up(large) {
+			grid-area: cta;
+			text-align: right;
+			justify-self: end;
+			align-self: start;
+		}
+	}
+
+	&__copyright {
+		font-size: 0.8125rem;
+		color: $grayishBlue;
+		@include breakpoint-up(large) {
+			grid-area: copyright;
+			justify-self: end;
+			align-self: end;
+		}
+	}
+}
