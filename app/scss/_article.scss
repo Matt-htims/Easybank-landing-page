@@ -1,0 +1,78 @@
+.articles {
+	background-color: $veryLightGray;
+}
+
+.article {
+	&__content {
+	}
+
+	&__grid {
+		display: grid;
+		// 1fr means that the items will take up the entire space that they can
+		grid-template-columns: 1fr;
+		gap: 1.875rem;
+
+		@include breakpoint-up(medium) {
+			// with repeat the first arg is the number of columns (2) and then we again say to take up as much space as possible but as there are two columns this will be shared evenly between the two
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include breakpoint-up(large) {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		// This another way to do the grid layout without the media queries
+		// It instead uses auto-fit which means the grid itself decides how many to be on each row based on values we can pass in
+		// This is done with minmax which takes in a min and then a max - we can use a max of 1fr to just say at max take up the whole row
+		// ------ grid-template-columns: repeat(auto-fit, minmax(14.375rem, 1fr)); ------
+		// Prefer the other approach with media queries as this can break into three columns which will not look as good with 4 items
+	}
+
+	&__item {
+		border-radius: 0.3125rem;
+		// for the curved edges to actually show up need to set overflow to hidden
+		overflow: hidden;
+		background-color: $white;
+		// Takes a number of params - 1 = horizontal position 2 = vertical postition (usually make the shadow a bit down from object
+		// 3 = the spread how hard of a line of the shadow there is (diffuse) (10-12px a good amount)
+		// 4 = the colour (good to use a semi transparent colour this is black with low opacity
+		box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+		transition: all 150ms ease-in-out;
+
+		&:hover {
+			// Now when the article item is hovered over is gets slightly bigger and responds
+			transform: scale(1.04);
+		}
+	}
+
+	&__image {
+		height: 12.5rem;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+
+	&__text {
+		padding: 1.875rem 1.875rem 2.5rem 1.875rem;
+		color: $grayishBlue;
+
+		@include breakpoint-up(medium) {
+			padding: 1.875rem 1.5625rem;
+		}
+	}
+	&__author {
+		font-size: 0.625rem;
+		margin-bottom: 0.75rem;
+	}
+
+	&__title {
+		font-size: 1.0625;
+		line-height: 1.2;
+		color: $darkBlue;
+		margin-bottom: 0.5rem;
+	}
+
+	&__description {
+		font-size: 0.825rem;
+	}
+}
