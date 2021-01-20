@@ -3,7 +3,7 @@ const btnHamburger = document.querySelector('#btnHamburger');
 const header = document.querySelector('.header');
 const fadeElements = document.querySelectorAll('.has-fade');
 
-header.addEventListener('click', function () {
+btnHamburger.addEventListener('click', function () {
 	if (header.classList.contains('open')) {
 		body.classList.remove('noscroll');
 		header.classList.remove('open');
